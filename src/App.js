@@ -31,7 +31,12 @@ export default function App() {
   const [searchText, setSearchText] = useState('');
 
   const [ darkMode, setdarkMode ] =useState(false);
-
+  useEffect(()=>{
+    const savedNotes = JSON.parse(localStorage.getItem('reat-notes-app-data'));
+    if (savedNotes){
+      setNotes(savedNotes)
+    }
+  },[])
   useEffect(()=>{
     localStorage.setItem('reat-notes-app-data',JSON.stringify(notes));
   },[notes]);
